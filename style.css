@@ -1,0 +1,245 @@
+/* 색상 및 디자인 토큰 — profile과 동일한 보라색 테마 */
+:root {
+  --primary: #667eea;
+  --primary-dark: #5a67d8;
+  --primary-light: #ebedfd;
+  --text-main: #2d3748;
+  --text-sub: #718096;
+  --bg: #f0f2ff;
+  --card-bg: #ffffff;
+  --radius: 20px;
+  --shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+}
+
+/* 기본 초기화 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 전체 페이지 — 중앙 정렬, 그라디언트 배경 */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg) 0%, #dde1ff 100%);
+  padding: 24px;
+}
+
+/* 카드 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 메인 카드 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+/* 제목 */
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+/* 입력 영역 — 입력창 + 추가 버튼 */
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+/* 텍스트 입력창 */
+.todo-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.todo-input::placeholder {
+  color: var(--text-sub);
+}
+
+/* 입력창 포커스 시 보라색 테두리 */
+.todo-input:focus {
+  border-color: var(--primary);
+}
+
+/* 추가 버튼 */
+.add-btn {
+  padding: 12px 20px;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  background: var(--primary-dark);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+/* 개수 표시 바 */
+.count-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+}
+
+.count-total {
+  color: var(--text-sub);
+}
+
+.count-done {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 필터 버튼 그룹 */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px 0;
+  background: transparent;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 선택된 필터 강조 */
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 완료된 항목 일괄 삭제 버튼 */
+.clear-done-btn {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  background: transparent;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #e53e3e;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-done-btn:hover:not(:disabled) {
+  background: #ffe0e0;
+  border-color: #e53e3e;
+}
+
+.clear-done-btn:disabled {
+  color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* 할 일 목록 */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 개별 할 일 항목 */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--primary-light);
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.todo-item:hover {
+  background: #dfe3fc;
+}
+
+/* 할 일 텍스트 */
+.todo-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* 완료된 항목 — 취소선 및 흐린 색상 */
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-sub);
+}
+
+/* 체크박스 — 보라색 테마 */
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 삭제 버튼 (× 아이콘) */
+.delete-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #ffe0e0;
+  color: #e53e3e;
+}
